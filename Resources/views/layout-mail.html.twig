@@ -1,0 +1,52 @@
+{% extends "layout.html.twig" %}
+
+{% block container %}
+    <body style="margin: 0; padding: 0;">
+        <table cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td align="center">
+                    <table align="center" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse; background-color: #F6F6F6;">
+                        <tr style="background-color: #9e2745; margin-left: 20px;">
+                            <td width="5%"></td>
+                            <td width="65%" style="padding: 10px 0px; border-bottom: 1px solid #FFFFFF;">
+                                <img src="{{urls.logo}}" /> 
+                            </td>
+                            <td width="25%" style="border-bottom: 1px solid #FFFFFF; vertical-align:bottom">
+                                <img src="{{urls.fb}}" /> 
+                                <img src="{{urls.instag}}" /> 
+                                <img src="{{urls.pint}}" /> 
+                                <img src="{{urls.twit}}" /> 
+                            </td>
+                            <td width="5%"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="background-color: #9e2745; padding-top: 20px;">
+                                <h1 style="color: #FFFFFF; text-align: center;">Bienvenue sur Hall-inn</h1>
+                                <h2 style="color: #FFFFFF; text-align: center; font-size: 16px;">Découvrez et réservez des salles uniques partout en france</h2>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="padding: 20px;">
+                                {% block content %}
+                                    {% include pathChildTemplate %}
+                                {% endblock %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="5%"></td>
+                            <td colspan="2" style="border-top: 1px solid #1D1D1B; padding-top: 5px;">
+                                <i>L'équipe Hall-inn</i>
+                            </td>
+                            <td width="5%"></td>
+                        </tr>
+                        <tr>
+                            <td align="center" colspan="4" style="padding-top: 20px; font-size: 12px;">
+                                &#169; Hall-inn 2015
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+{% endblock %}
