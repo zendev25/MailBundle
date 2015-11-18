@@ -45,30 +45,32 @@ class MailController extends Controller {
 
         $message = $this->renderView('ZENMailBundle::layout-mail.html.twig', array('pathChildTemplate' => $pathChildTemplate, 'user' => $user, 'urls' => $urls, 'confirmationUrl' => $confirmationUrl));
 
+        
         return $this->sendMailAction($from, $to, $subject, $message);
     }
 
     public function sendMailAction($from, $to, $subject, $message) {
 
         
-        $mail = 1;
-        if ($mail) {
-            $headers = 'MIME-Version: 1.0' . "\r\n";
-            $headers .= 'Content-type: text/html; charset=utf8\n';
+//old version php mail()
+//        if ($mail) {
+//            $headers = 'MIME-Version: 1.0' . "\r\n";
+//            $headers .= 'Content-type: text/html; charset=utf8\n';
+//        
+//            return mail($to, $subject, $message, $headers);
+//        } else {
+
         
-            return mail($to, $subject, $message, $headers);
-        } else {
-            $message = \Swift_Message::newInstance();
-            $cids = $this->embedImages($message, $urls);
-            $message->setSubject($subject)
-                    ->setFrom($from)
-                    ->setTo($to)
-                    ->setBody($this->renderView('ZENMailBundle::layout-mail.html.twig', array('pathChildTemplate' => $pathChildTemplate, 'user' => $user, 'urls' => $cids)
-                            ), 'text/html'
-                    )
-            ;
-            return $this->get('mailer')->send($message);
-        }
+        $mail = \Swift_Message::newInstance();
+        
+        $mail->setSubject($subject)
+                ->setFrom($from)
+                ->setTo($to)
+                ->setBody($message, 'text/html')
+        ;
+        
+        return $this->get('mailer')->send($mail);
+        
     }
 
 }
