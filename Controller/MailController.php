@@ -38,34 +38,34 @@ class MailController extends Controller {
         return $cids;
     }
 
-    public function sendMailUserAction($subject, $user, $pathChildTemplate, $param=array()) {
+    public function sendMailUserAction($subject, $user, $pathChildTemplate, $param = array()) {
         $urls = $this->getImages();
         $to = $user->getEmail();
         $from = $this->container->getParameter('mailer_user');
 
         $message = $this->renderView('ZENMailBundle::layout-mail.html.twig', [
-            'pathChildTemplate' => $pathChildTemplate, 
-            'user' => $user, 
-            'urls' => $urls, 
-            'param' => $param 
+            'pathChildTemplate' => $pathChildTemplate,
+            'subject' => $subject,
+            'user' => $user,
+            'urls' => $urls,
+            'param' => $param
         ]);
 
-        
+
         return $this->sendMailAction($from, $to, $subject, $message);
     }
 
     public function sendMailAction($from, $to, $subject, $message) {
-        
+
         $mail = \Swift_Message::newInstance();
-        
+
         $mail->setSubject($subject)
                 ->setFrom($from)
                 ->setTo($to)
                 ->setBody($message, 'text/html')
         ;
-        
+
         return $this->get('mailer')->send($mail);
-        
     }
 
 }
