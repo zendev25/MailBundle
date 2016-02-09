@@ -38,28 +38,23 @@ class MailController extends Controller {
         return $cids;
     }
 
-    public function sendMailUserAction($subject, $user, $pathChildTemplate, $confirmationUrl = "") {
+    public function sendMailUserAction($subject, $user, $pathChildTemplate, $param=array()) {
         $urls = $this->getImages();
         $to = $user->getEmail();
         $from = $this->container->getParameter('mailer_user');
 
-        $message = $this->renderView('ZENMailBundle::layout-mail.html.twig', array('pathChildTemplate' => $pathChildTemplate, 'user' => $user, 'urls' => $urls, 'confirmationUrl' => $confirmationUrl));
+        $message = $this->renderView('ZENMailBundle::layout-mail.html.twig', [
+            'pathChildTemplate' => $pathChildTemplate, 
+            'user' => $user, 
+            'urls' => $urls, 
+            'param' => $param 
+        ]);
 
         
         return $this->sendMailAction($from, $to, $subject, $message);
     }
 
     public function sendMailAction($from, $to, $subject, $message) {
-
-        
-//old version php mail()
-//        if ($mail) {
-//            $headers = 'MIME-Version: 1.0' . "\r\n";
-//            $headers .= 'Content-type: text/html; charset=utf8\n';
-//        
-//            return mail($to, $subject, $message, $headers);
-//        } else {
-
         
         $mail = \Swift_Message::newInstance();
         
