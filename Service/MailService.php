@@ -20,11 +20,11 @@ class MailService {
     //Recup les url des images
     protected function getImages() {
         $urls = array();
-        $urlFb = str_replace('app_dev.php/', '', $this->getRequest()->getUriForPath('/bundles/zenmail/images/facebook.png'));
-        $urlInstag = str_replace('app_dev.php/', '', $this->getRequest()->getUriForPath('/bundles/zenmail/images/instagram.png'));
-        $urlPint = str_replace('app_dev.php/', '', $this->getRequest()->getUriForPath('/bundles/zenmail/images/pinterest.png'));
-        $urlTwit = str_replace('app_dev.php/', '', $this->getRequest()->getUriForPath('/bundles/zenmail/images/twitter.png'));
-        $urlLogo = str_replace('app_dev.php/', '', $this->getRequest()->getUriForPath('/bundles/zenmail/images/logo.png'));
+        $urlFb = str_replace('app_dev.php/', '', $this->container->get('request')->getUriForPath('/bundles/zenmail/images/facebook.png'));
+        $urlInstag = str_replace('app_dev.php/', '', $this->container->get('request')->getUriForPath('/bundles/zenmail/images/instagram.png'));
+        $urlPint = str_replace('app_dev.php/', '', $this->container->get('request')->getUriForPath('/bundles/zenmail/images/pinterest.png'));
+        $urlTwit = str_replace('app_dev.php/', '', $this->container->get('request')->getUriForPath('/bundles/zenmail/images/twitter.png'));
+        $urlLogo = str_replace('app_dev.php/', '', $this->container->get('request')->getUriForPath('/bundles/zenmail/images/logo.png'));
 
         $urls['fb'] = $urlFb;
         $urls['instag'] = $urlInstag;
