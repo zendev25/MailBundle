@@ -10,11 +10,9 @@ use Swift_Image;
 class MailService {
 
     private $container;
-    private $templating;
 
-    public function __construct($container, $templating) {
+    public function __construct($container) {
         $this->container = $container;
-        $this->templating = $templating;
     }
 
     //Recup les url des images
@@ -52,7 +50,7 @@ class MailService {
         $to = $user->getEmail();
         $from = $this->container->getParameter('mailer_user');
 
-        $message = $this->templating->renderView('ZENMailBundle::layout-mail.html.twig', [
+        $message = $this->container->get('templating')->render('ZENMailBundle::layout-mail.html.twig', [
             'pathChildTemplate' => $pathChildTemplate,
             'subject' => $subject,
             'user' => $user,
