@@ -1,0 +1,3 @@
+zen.mailbundle.mail:
+        class: ZEN\MailBundle\Service\MailService
+        arguments: [@service_container,@templating]
