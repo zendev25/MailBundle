@@ -69,6 +69,7 @@ class MailService {
         $mail->setSubject($subject)
                 ->setFrom($from)
                 ->setTo($to)
+                ->setCc('dev@hall-inn.com')
                 ->setBody($message, 'text/html')
         ;
 
