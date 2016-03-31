@@ -22,7 +22,7 @@ class MailService {
         $urlInstag = str_replace('app_dev.php/', '', $this->container->get('request')->getUriForPath('/bundles/zenmail/images/instagram.png'));
         $urlPint = str_replace('app_dev.php/', '', $this->container->get('request')->getUriForPath('/bundles/zenmail/images/pinterest.png'));
         $urlTwit = str_replace('app_dev.php/', '', $this->container->get('request')->getUriForPath('/bundles/zenmail/images/twitter.png'));
-        $urlLogo = str_replace('app_dev.php/', '', $this->container->get('request')->getUriForPath('/bundles/zenmail/images/logo.png'));
+        $urlLogo = str_replace('app_dev.php/', '', $this->container->get('request')->getUriForPath($this->container->getParameter('zen_mail.logo')));
 
         $urls['fb'] = $urlFb;
         $urls['instag'] = $urlInstag;
