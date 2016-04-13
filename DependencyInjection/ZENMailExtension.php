@@ -25,6 +25,7 @@ class ZENMailExtension extends Extension {
         $loader->load('services.yml');
 
         $container->setParameter('zen_mail.logo', $config);
+        $container->setParameter('zen_mail.sender', $config);
     }
 
 }
