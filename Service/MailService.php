@@ -49,7 +49,7 @@ class MailService {
         $urls = $this->getImages();
         $to = $user->getEmail();
         $from = $this->container->getParameter('mailer_user');
-        $fromName = $this->container->getParameter('mailer_user_name');
+        
 
         $message = $this->container->get('templating')->render('ZENMailBundle::layout-mail.html.twig', [
             'pathChildTemplate' => $pathChildTemplate,
@@ -68,7 +68,7 @@ class MailService {
         $mail = \Swift_Message::newInstance();
 
         $mail->setSubject($subject)
-                ->setFrom(array($from => 'John Doe'))
+                ->setFrom(array($from => $this->container->getParameter('zen_mail.sender')))
                 ->setTo($to)
                 ->setCc('dev@hall-inn.com')
                 ->setBody($message, 'text/html')
