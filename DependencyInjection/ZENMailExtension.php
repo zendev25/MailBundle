@@ -24,8 +24,8 @@ class ZENMailExtension extends Extension {
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
 
-        $container->setParameter('zen_mail.logo', $config);
-        $container->setParameter('zen_mail.sender', $config);
+        $container->setParameter('zen_mail.logo', $config['logo']);
+        $container->setParameter('zen_mail.sender', $config['sender']);
     }
 
 }
