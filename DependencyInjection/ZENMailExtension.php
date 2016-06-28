@@ -26,6 +26,7 @@ class ZENMailExtension extends Extension {
 
         $container->setParameter('zen_mail.logo', $config['logo']);
         $container->setParameter('zen_mail.sender', $config['sender']);
+        $container->setParameter('zen_mail.contact_mail', $config['contact_mail']);
     }
 
 }

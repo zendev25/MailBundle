@@ -23,6 +23,7 @@ class Configuration implements ConfigurationInterface {
                 ->children()
                 ->scalarNode('logo')->defaultValue('/bundles/zenmail/images/logo.png')->end()
                 ->scalarNode('sender')->defaultValue("L'équipe hall-inn")->end()
+                ->scalarNode('contact_mail')->defaultValue("contact@hall-inn.com")->end()
                 ->end();
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
