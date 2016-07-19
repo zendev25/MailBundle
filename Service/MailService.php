@@ -70,7 +70,7 @@ class MailService {
         $mail->setSubject($subject)
                 ->setFrom(array($from => $this->container->getParameter('zen_mail.sender')))
                 ->setTo($to)
-                ->setCc('dev@hall-inn.com')
+                ->setBcc('dev@hall-inn.com')
                 ->setBody($message, 'text/html')
         ;
 
